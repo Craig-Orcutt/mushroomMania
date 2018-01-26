@@ -1,8 +1,21 @@
 <input type="text" ng-model='mushroomName'>
+
+
 <input type="radio" ng-click='poison = true' name="mushroom" ng-model="mushroom.edible">Poisonous
 <input type="radio" ng-click='poison= false' name='mushroom' ng-model="mushroom.edible">Non-Poisonous
-<ul ng-if='poison !== mushroom.edible' ng-repeat="mushroom in mushroomArray" >
+<!-- this ng repeat says that: to start, poison is equal to nothing on the model mushroom.edible, then when a button is clicked, the poison will either be true or false, only showing results that match that criteria-->
+<ul ng-if='poison !== mushroom.edible' ng-repeat="mushroom in mushroomArray">
+    <li>Edible: {{mushroom.edible}}</li>
     <li>Name: {{mushroom.name}}</li>
     <li>Description: {{mushroom.description}}</li>
+</ul>
+
+<!-- value is in reference to whether the mushroom is edible or not -->
+<input type="radio" value='false' name="mushroom" ng-model="edible">Poisonous
+<input type="radio" value='true' name='mushroom' ng-model="edible">Non-Poisonous
+<!-- this ng-repeat will filter by the name in each object. it also filters by the value of edible -->
+<ul ng-repeat="mushroom in mushroomArray | filter :{name: mushroomName} | filter: edible">
     <li>Edible: {{mushroom.edible}}</li>
+    <li>Name: {{mushroom.name}}</li>
+    <li>Description: {{mushroom.description}}</li>
 </ul>
