@@ -1,0 +1,8 @@
+<input type="text" ng-model='mushroomName'>
+<input type="radio" ng-click='poison = true' name="mushroom" ng-model="mushroom.edible">Poisonous
+<input type="radio" ng-click='poison= false' name='mushroom' ng-model="mushroom.edible">Non-Poisonous
+<ul ng-if='poison !== mushroom.edible' ng-repeat="mushroom in mushroomArray" >
+    <li>Name: {{mushroom.name}}</li>
+    <li>Description: {{mushroom.description}}</li>
+    <li>Edible: {{mushroom.edible}}</li>
+</ul>
